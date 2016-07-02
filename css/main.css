@@ -1549,7 +1549,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #eedecc;
+  background: #93ff30;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2141,9 +2141,6 @@ body {
   color: #fff;
   font-weight: 400;
 }
-.posts-expand .post-title-link:hover {
-  color: #b36251;
-}
 .posts-expand .post-title-link::before {
   background-color: #fff;
 }
@@ -2185,6 +2182,24 @@ a:hover {
 }
 .site-description {
   color: #fff;
+}
+.post-nav-item a {
+  color: #cac8c8;
+}
+.post-nav-item a:hover {
+  color: #b36868;
+}
+.sidebar-nav li {
+  color: #fff;
+}
+.post-toc-empty {
+  color: #d6c5c5;
+}
+.site-author-name {
+  color: #dd642e;
+}
+.site-state-item-count {
+  color: #f55c11;
 }
 @media (min-width: 992px) {
   .full-image.full-image.full-image {
