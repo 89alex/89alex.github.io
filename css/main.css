@@ -1549,7 +1549,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #c9ff7e;
+  background: #9affa8;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2207,6 +2207,14 @@ a:hover {
   margin-left: 12%;
   margin-top: 10%;
   border-radius: 3px;
+}
+#ds-thread #ds-reset .ds-textarea-wrapper textarea {
+  color: #f7b18f !important;
+}
+h3 a,
+h1 a,
+h2 a {
+  border: 0;
 }
 @media (min-width: 992px) {
   .full-image.full-image.full-image {

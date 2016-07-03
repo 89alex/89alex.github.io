@@ -1,0 +1,734 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="HEXO NEXT主题," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="Hexo的NexT主题个性化：添加文章阅读量
+关于Hexo的文章阅读量设置问题，大多数人都是使用不蒜子的代码实现。但是这个方法仅局限于在文章页面显示阅读数，首页是不显示的。
+下面介绍如何在首页及文章页面都显示文章的阅读量，显示效果如下：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HEXO NEXT 之 添加文章阅读量">
+<meta property="og:url" content="http://yoursite.com/2016/07/03/HEXO-next-之-添加文章阅读量/index.html">
+<meta property="og:site_name" content="沙滩上的梦厦">
+<meta property="og:description" content="Hexo的NexT主题个性化：添加文章阅读量
+关于Hexo的文章阅读量设置问题，大多数人都是使用不蒜子的代码实现。但是这个方法仅局限于在文章页面显示阅读数，首页是不显示的。
+下面介绍如何在首页及文章页面都显示文章的阅读量，显示效果如下：">
+<meta property="og:image" content="http://yoursite.com/images/next-read/1.png">
+<meta property="og:image" content="http://yoursite.com/images/next-read/2.png">
+<meta property="og:image" content="http://yoursite.com/images/next-read/3.png">
+<meta property="og:image" content="http://yoursite.com/images/next-read/4.png">
+<meta property="og:updated_time" content="2016-07-03T16:08:50.263Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HEXO NEXT 之 添加文章阅读量">
+<meta name="twitter:description" content="Hexo的NexT主题个性化：添加文章阅读量
+关于Hexo的文章阅读量设置问题，大多数人都是使用不蒜子的代码实现。但是这个方法仅局限于在文章页面显示阅读数，首页是不显示的。
+下面介绍如何在首页及文章页面都显示文章的阅读量，显示效果如下：">
+<meta name="twitter:image" content="http://yoursite.com/images/next-read/1.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/07/03/HEXO-next-之-添加文章阅读量/"/>
+
+  <title> HEXO NEXT 之 添加文章阅读量 | 沙滩上的梦厦 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+ 
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">沙滩上的梦厦</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">My blog</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                HEXO NEXT 之 添加文章阅读量
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-03T23:30:19+08:00" content="2016-07-03">
+              2016-07-03
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/03/HEXO-next-之-添加文章阅读量/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/03/HEXO-next-之-添加文章阅读量/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+            
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Hexo的NexT主题个性化：添加文章阅读量</p>
+<p>关于Hexo的文章阅读量设置问题，大多数人都是使用不蒜子的代码实现。但是这个方法仅局限于在文章页面显示阅读数，首页是不显示的。</p>
+<p>下面介绍如何在首页及文章页面都显示文章的阅读量，显示效果如下：</p>
+<p><img src="/images/next-read/1.png"><br><a id="more"></a></p>
+<h2 id="配置LeanCloud"><a href="#配置LeanCloud" class="headerlink" title="配置LeanCloud"></a>配置LeanCloud</h2><p>注册</p>
+<p>打开LeanCloud官网，进入注册页面注册。完成邮箱激活后，点击头像，进入控制台页面，如下：</p>
+<p><img src="/images/next-read/2.png"><br><!--more--></p>
+<h3 id="创建新应用"><a href="#创建新应用" class="headerlink" title="创建新应用"></a>创建新应用</h3><p>创建一个新应用(类型为JavaScript SDK)，点击应用进入；</p>
+<p>创建名称为Counter的Class</p>
+<p><img src="/images/next-read/3.png"><br><!--more--></p>
+<h3 id="Web安全性"><a href="#Web安全性" class="headerlink" title="Web安全性"></a>Web安全性</h3><p>为了保证应用的统计计数功能仅应用于自己的博客系统，你可以在应用-&gt;设置-&gt;安全中心的Web安全域名中加入自己的博客域名，以保证数据的调用安全。</p>
+<h2 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h2><p>编辑网站根目录下的_config.yml文件，添加如下：</p>
+<p> add post views<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">leancloud_visitors:</div><div class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></div><div class="line">  app_id: **你的app_id**</div><div class="line">  app_key: **你的app_key**</div></pre></td></tr></table></figure></p>
+<p>其中，app_id和app_key在你所创建的应用的设置-&gt;应用Key中。</p>
+<h3 id="修改NexT主题文件"><a href="#修改NexT主题文件" class="headerlink" title="修改NexT主题文件"></a>修改NexT主题文件</h3><p>添加lean-analytics.swig文件</p>
+<p>在主题目录下的\layout_scripts路径下，新建一个名称为lean-analytics.swig的文件，并添加如下内容：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div></pre></td><td class="code"><pre><div class="line">&lt;!-- custom analytics part create by xiamo --&gt;</div><div class="line">&lt;script src=<span class="string">"https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"</span>&gt;&lt;/script&gt;</div><div class="line">&lt;script&gt;AV.initialize(<span class="string">"&#123;&#123;theme.leancloud_visitors.app_id&#125;&#125;"</span>, <span class="string">"&#123;&#123;theme.leancloud_visitors.app_key&#125;&#125;"</span>);&lt;/script&gt;</div><div class="line">&lt;script&gt;</div><div class="line"><span class="keyword">function</span> showTime(Counter) &#123;</div><div class="line">    var query = new AV.Query(Counter);</div><div class="line">    $(<span class="string">".leancloud_visitors"</span>).each(<span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">        var url = $(this).attr(<span class="string">"id"</span>).trim();</div><div class="line">        query.equalTo(<span class="string">"url"</span>, url);</div><div class="line">        query.find(&#123;</div><div class="line">            success: <span class="keyword">function</span>(results) &#123;</div><div class="line">                <span class="keyword">if</span> (results.length == 0) &#123;</div><div class="line">                    var content = <span class="string">'0 '</span> + $(document.getElementById(url)).text();</div><div class="line">                    $(document.getElementById(url)).text(content);</div><div class="line">                    <span class="built_in">return</span>;</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">for</span> (var i = 0; i &lt; results.length; i++) &#123;</div><div class="line">                    var object = results[i];</div><div class="line">                    var content = object.get(<span class="string">'time'</span>) + <span class="string">' '</span> + $(document.getElementById(url)).text();</div><div class="line">                    $(document.getElementById(url)).text(content);</div><div class="line">                &#125;</div><div class="line">            &#125;,</div><div class="line">            error: <span class="keyword">function</span>(object, error) &#123;</div><div class="line">                console.log(<span class="string">"Error: "</span> + error.code + <span class="string">" "</span> + error.message);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line"></div><div class="line">    &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">function</span> addCount(Counter) &#123;</div><div class="line">    var Counter = AV.Object.extend(<span class="string">"Counter"</span>);</div><div class="line">    url = $(<span class="string">".leancloud_visitors"</span>).attr(<span class="string">'id'</span>).trim();</div><div class="line">    title = $(<span class="string">".leancloud_visitors"</span>).attr(<span class="string">'data-flag-title'</span>).trim();</div><div class="line">    var query = new AV.Query(Counter);</div><div class="line">    query.equalTo(<span class="string">"url"</span>, url);</div><div class="line">    query.find(&#123;</div><div class="line">        success: <span class="keyword">function</span>(results) &#123;</div><div class="line">            <span class="keyword">if</span> (results.length &gt; 0) &#123;</div><div class="line">                var counter = results[0];</div><div class="line">                counter.fetchWhenSave(<span class="literal">true</span>);</div><div class="line">                counter.increment(<span class="string">"time"</span>);</div><div class="line">                counter.save(null, &#123;</div><div class="line">                    success: <span class="keyword">function</span>(counter) &#123;</div><div class="line">                        var content =  counter.get(<span class="string">'time'</span>) + <span class="string">' '</span> + $(document.getElementById(url)).text();</div><div class="line">                        $(document.getElementById(url)).text(content);</div><div class="line">                    &#125;,</div><div class="line">                    error: <span class="keyword">function</span>(counter, error) &#123;</div><div class="line">                        console.log(<span class="string">'Failed to save Visitor num, with error message: '</span> + error.message);</div><div class="line">                    &#125;</div><div class="line">                &#125;);</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                var newcounter = new Counter();</div><div class="line">                newcounter.set(<span class="string">"title"</span>, title);</div><div class="line">                newcounter.set(<span class="string">"url"</span>, url);</div><div class="line">                newcounter.set(<span class="string">"time"</span>, 1);</div><div class="line">                newcounter.save(null, &#123;</div><div class="line">                    success: <span class="keyword">function</span>(newcounter) &#123;</div><div class="line">                        console.log(<span class="string">"newcounter.get('time')="</span>+newcounter.get(<span class="string">'time'</span>));</div><div class="line">                        var content = newcounter.get(<span class="string">'time'</span>) + <span class="string">' '</span> + $(document.getElementById(url)).text();</div><div class="line">                        $(document.getElementById(url)).text(content);</div><div class="line">                    &#125;,</div><div class="line">                    error: <span class="keyword">function</span>(newcounter, error) &#123;</div><div class="line">                        console.log(<span class="string">'Failed to create'</span>);</div><div class="line">                    &#125;</div><div class="line">                &#125;);</div><div class="line">            &#125;</div><div class="line">        &#125;,</div><div class="line">        error: <span class="keyword">function</span>(error) &#123;</div><div class="line">            console.log(<span class="string">'Error:'</span> + error.code + <span class="string">" "</span> + error.message);</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">&#125;</div><div class="line">$(<span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">    var Counter = AV.Object.extend(<span class="string">"Counter"</span>);</div><div class="line">    <span class="keyword">if</span> ($(<span class="string">'.leancloud_visitors'</span>).length == 1) &#123;</div><div class="line">        addCount(Counter);</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> ($(<span class="string">'.post-title-link'</span>).length &gt; 1) &#123;</div><div class="line">        showTime(Counter);</div><div class="line">    &#125;</div><div class="line">&#125;); </div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<p>其中，控制显示的格式的主要为content变量，按自己的需求相应修改即可。</p>
+<p>修改post.swig文件</p>
+<p>在主题的layout_macro路径下，编辑post.swig文件，找到相应的插入位置（大概在98行左右）：</p>
+<p><img src="/images/next-read/4.png"><br><!--more--></p>
+<p>插入如下代码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&#123;% <span class="keyword">if</span> theme.leancloud_visitors.enable %&#125;</div><div class="line">&amp;nbsp; | &amp;nbsp;</div><div class="line">&lt;span id=<span class="string">"&#123;&#123; url_for(post.path) &#125;&#125;"</span>class=<span class="string">"leancloud_visitors"</span> data-flag-title=<span class="string">"&#123;&#123; post.title &#125;&#125;"</span>&gt;</div><div class="line">         &amp;nbsp;&#123;&#123;__(<span class="string">'post.visitors'</span>)&#125;&#125;</div><div class="line">        &lt;/span&gt;</div><div class="line">&#123;% endif %&#125;</div></pre></td></tr></table></figure>
+<h3 id="修改layout-swig文件"><a href="#修改layout-swig文件" class="headerlink" title="修改layout.swig文件"></a>修改layout.swig文件</h3><p>在主题目录下的layout目录下，编辑_layout.swig文件，在的上方（大概在70行左右）插入如下代码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% <span class="keyword">if</span> theme.leancloud_visitors.enable %&#125;</div><div class="line">&#123;% include <span class="string">'_scripts/lean-analytics.swig'</span> %&#125;</div><div class="line">&#123;% endif %&#125;</div></pre></td></tr></table></figure>
+<h3 id="修改语言配置文件"><a href="#修改语言配置文件" class="headerlink" title="修改语言配置文件"></a>修改语言配置文件</h3><p>如果你的网站使用的是英语，则只需要编辑主题目录下的languages\en.yml文件，增加post字段如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">post:</div><div class="line">  sticky: Sticky</div><div class="line">  posted: Posted on</div><div class="line">  visitors: Views // 增加的字段</div></pre></td></tr></table></figure></p>
+<p>如果网站使用的是中文，则编辑languages\zh-Hans.yml文件，相应的增加<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">post:</div><div class="line">  posted: 发表于</div><div class="line">  visitors: 阅读次数</div></pre></td></tr></table></figure></p>
+<p>  …<br>其他语言与之类似，将visitors设置成你希望翻译的字段。</p>
+<p>最后，重新生成并部署你的网站即可。</p>
+<p>增加网站的浏览次数与访客数量统计功能</p>
+<p>网站的浏览次数，即pv；网站的访客数为uv。pv的计算方式是，单个用户连续点击n篇文章，记录n次访问量；uv的计算方式是，单个用户连续点击n篇文章，只记录1次访客数。你可以根据需要添加相应的统计功能。</p>
+<h3 id="安装busuanzi-js脚本"><a href="#安装busuanzi-js脚本" class="headerlink" title="安装busuanzi.js脚本"></a>安装busuanzi.js脚本</h3><p>如果你使用的是NexT主题（其他主题类似），打开/theme/next/layout/_partial/footer.swig文件，拷贝下面的代码至文件的开头。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;script async src=<span class="string">"https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"</span>&gt;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="显示统计标签"><a href="#显示统计标签" class="headerlink" title="显示统计标签"></a>显示统计标签</h3><p>同样编辑/theme/next/layout/_partial/footer.swig文件。</p>
+<p>如果你想要显示pv统计量，复制以下代码至你想要放置的位置，<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;span id=<span class="string">"busuanzi_container_site_pv"</span>&gt;</div><div class="line">    本站总访问量&lt;span id=<span class="string">"busuanzi_value_site_pv"</span>&gt;&lt;/span&gt;次</div><div class="line">&lt;/span&gt;</div></pre></td></tr></table></figure></p>
+<p>如果你想要显示uv统计量，复制以下代码至你想要放置的位置，<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;span id=<span class="string">"busuanzi_container_site_uv"</span>&gt;</div><div class="line">  本站访客数&lt;span id=<span class="string">"busuanzi_value_site_uv"</span>&gt;&lt;/span&gt;人次</div><div class="line">&lt;/span&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="转载地址："><a href="#转载地址：" class="headerlink" title="转载地址："></a>转载地址：</h3><p><a href="http://www.jeyzhang.com/hexo-next-add-post-views.html" target="_blank" rel="external">http://www.jeyzhang.com/hexo-next-add-post-views.html</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block； padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/wechat.png" alt="Xinhao-Kc wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎您扫一扫上面的微信号，订阅我的博客！</div>
+</div>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/HEXO-NEXT主题/" rel="tag">#HEXO NEXT主题</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/07/03/大学生活画上句号。/" rel="next" title="大学生活画上句号。">
+                <i class="fa fa-chevron-left"></i> 大学生活画上句号。
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    <!-- 多说评论框 start -->
+    	<div class="ds-thread" data-thread-key="//请将此处替换成文章在你的站点中的ID" data-title="请替换成文章的标题" data-url="请替换成文章的网址"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"89alex"};
+    	(function() {
+    		var ds = document.createElement('script');
+    		ds.type = 'text/javascript';ds.async = true;
+    		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    		ds.charset = 'UTF-8';
+    		(document.getElementsByTagName('head')[0]
+    		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+    	})();
+    	</script>
+    <!-- 多说公共JS代码 end -->
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Xinhao-Kc" />
+          <p class="site-author-name" itemprop="name">Xinhao-Kc</p>
+          <p class="site-description motion-element" itemprop="description">努力到感动自己，坚持到无能为力</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/89alex" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/5600207545" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="/" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="/" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#配置LeanCloud"><span class="nav-number">1.</span> <span class="nav-text">配置LeanCloud</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建新应用"><span class="nav-number">1.1.</span> <span class="nav-text">创建新应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Web安全性"><span class="nav-number">1.2.</span> <span class="nav-text">Web安全性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改配置文件"><span class="nav-number">2.</span> <span class="nav-text">修改配置文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#修改NexT主题文件"><span class="nav-number">2.1.</span> <span class="nav-text">修改NexT主题文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改layout-swig文件"><span class="nav-number">2.2.</span> <span class="nav-text">修改layout.swig文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改语言配置文件"><span class="nav-number">2.3.</span> <span class="nav-text">修改语言配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装busuanzi-js脚本"><span class="nav-number">2.4.</span> <span class="nav-text">安装busuanzi.js脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#显示统计标签"><span class="nav-number">2.5.</span> <span class="nav-text">显示统计标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#转载地址："><span class="nav-number">2.6.</span> <span class="nav-text">转载地址：</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<div class="copyright" >
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+&nbsp;&nbsp;&nbsp;
+<span id="busuanzi_container_site_uv">
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</span>&nbsp;&nbsp;&nbsp;
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Xinhao-Kc</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"89alex"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+
+
+</body>
+</html>
