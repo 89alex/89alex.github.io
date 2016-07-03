@@ -1549,7 +1549,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #93ff30;
+  background: #1a18ff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2200,6 +2200,13 @@ a:hover {
 }
 .site-state-item-count {
   color: #f55c11;
+}
+.links-of-author-item a {
+  width: 83%;
+  background: #eee;
+  margin-left: 12%;
+  margin-top: 10%;
+  border-radius: 3px;
 }
 @media (min-width: 992px) {
   .full-image.full-image.full-image {
