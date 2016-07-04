@@ -371,8 +371,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/07/03/HEXO-GitHub-搭建静态blog/" rel="prev" title="HEXO+GitHub 搭建静态blog">
-                HEXO+GitHub 搭建静态blog <i class="fa fa-chevron-right"></i>
+              <a href="/2016/07/03/HEXO-next-之-添加文章阅读量/" rel="prev" title="HEXO NEXT 之 添加文章阅读量">
+                HEXO NEXT 之 添加文章阅读量 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -389,7 +389,19 @@
     <div class="post-spread">
       
         <!-- JiaThis Button BEGIN -->
-
+<%     
+    String context_1 = request.getContextPath();  
+    int port = request.getServerPort();  
+    String context = "";  
+    String httpsPath = "";  
+    if(port==80 || port==443){  
+        context = "http://" + request.getServerName() +  context_1;  
+        httpsPath = "https://" + request.getServerName() +  context_1;  
+    } else {  
+         context = "http://" + request.getServerName() + ":" + port  + "" +  context_1;  
+         httpsPath = "https://" + request.getServerName() + ":" + port  + "" +  context_1;  
+    }         
+%>  
 <h4>如果您喜欢这篇文章的话，动下手指分享给更多人，谢谢啦！</h4>
 <div class="jiathis_style">
   <a class="jiathis_button_tsina"></a>

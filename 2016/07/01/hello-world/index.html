@@ -358,7 +358,19 @@ Quick">
     <div class="post-spread">
       
         <!-- JiaThis Button BEGIN -->
-
+<%     
+    String context_1 = request.getContextPath();  
+    int port = request.getServerPort();  
+    String context = "";  
+    String httpsPath = "";  
+    if(port==80 || port==443){  
+        context = "http://" + request.getServerName() +  context_1;  
+        httpsPath = "https://" + request.getServerName() +  context_1;  
+    } else {  
+         context = "http://" + request.getServerName() + ":" + port  + "" +  context_1;  
+         httpsPath = "https://" + request.getServerName() + ":" + port  + "" +  context_1;  
+    }         
+%>  
 <h4>如果您喜欢这篇文章的话，动下手指分享给更多人，谢谢啦！</h4>
 <div class="jiathis_style">
   <a class="jiathis_button_tsina"></a>
