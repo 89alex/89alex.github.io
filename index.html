@@ -143,6 +143,12 @@
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-meta ">
+<script>
+    var html = 'http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"';
+    var newNode = document.createElement("meta");
+    newNode.innerHTML =html; 
+    document.getElementsByTagName('head')[0].appendChild(newNode);
+</script>
 <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="https://music.163.com/outchain/player?type=2&id=113537&auto=1&height=66"></iframe>
  
 
@@ -302,7 +308,7 @@
         
           <p>HEXO+GitHub的一些总结</p>
 <p>冒着明天星期一特困的风险，也要今晚把这篇文章写完（不重点介绍那些主题，主要讲下配置的一些坑）大神勿喷！！！</p>
-<p><img src="/images/hexo-github/3.png"><br>
+<p><img src="/images/hexo-github/3.jpg"><br>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/07/03/HEXO-GitHub-搭建静态blog/#more" rel="contents">
               阅读全文 &raquo;
