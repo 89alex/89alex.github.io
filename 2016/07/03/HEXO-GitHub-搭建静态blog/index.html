@@ -398,8 +398,8 @@
     <div class="post-spread">
       
         <!--MOB SHARE BEGIN-->
-<div class="-mob-share-ui-button -mob-share-open">分享</div>
 <div class="-mob-share-ui" style="display: none">
+<h2>如果您也喜欢这篇文章，请动下手指分享给更多朋友，谢谢啦！</h2>
     <ul class="-mob-share-list">
         <li class="-mob-share-weibo"><p>新浪微博</p></li>
         <li class="-mob-share-tencentweibo"><p>腾讯微博</p></li>
@@ -411,10 +411,37 @@
         <li class="-mob-share-facebook"><p>Facebook</p></li>
         <li class="-mob-share-twitter"><p>Twitter</p></li>
     </ul>
-    <div class="-mob-share-close">取消</div>
 </div>
 <div class="-mob-share-ui-bg"></div>
-<script id="-mob-share" src="http://f1.webshare.mob.com/code/mob-share.js?appkey=appkey"></script>
+    <style>
+        .-mob-share-ui{
+            background: none;
+            visibility: inherit !important;
+            position: inherit !important;
+            voerflow:hidden;
+            opacity: 1 !important;
+            border:0;
+            margin-top: 6%;
+        }
+        .-mob-share-ui h2{
+            color:#fff;
+            margin-bottom:6%;
+        }
+        .-mob-share-ui li{
+               position: inherit !important;
+                top: 0 !important;
+                left: 0 !important;
+                margin-right: 2% !important;
+                width: 50px !important;
+                height: 30px !important;
+                background-size: 54% !important;
+                border:0;
+        }
+        .-mob-share-ui li p{
+                color: #fff !important;
+        }
+    </style>
+<script id="-mob-share" src="https://f1.webshare.mob.com/code/mob-share.js?appkey=appkey"></script>
 <!--MOB SHARE END-->
 
       
