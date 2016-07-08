@@ -1,0 +1,729 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="MVC前端框架," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="首先，拿React和Angular比较本身就没多大意义。如果非要比较的话，我认为React比Angular 1.x的Directive要简单。
+从做一个复杂完整的SPA的角度来说的话，就目前而言，我认为基于React会更难一些（主要以react的角度来谈一下）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="react与angular的取舍">
+<meta property="og:url" content="http://yoursite.com/2016/07/09/react与angular的取舍/index.html">
+<meta property="og:site_name" content="沙滩上的梦厦">
+<meta property="og:description" content="首先，拿React和Angular比较本身就没多大意义。如果非要比较的话，我认为React比Angular 1.x的Directive要简单。
+从做一个复杂完整的SPA的角度来说的话，就目前而言，我认为基于React会更难一些（主要以react的角度来谈一下）">
+<meta property="og:image" content="http://yoursite.com/images/mvc/.png">
+<meta property="og:updated_time" content="2016-07-08T17:37:06.670Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="react与angular的取舍">
+<meta name="twitter:description" content="首先，拿React和Angular比较本身就没多大意义。如果非要比较的话，我认为React比Angular 1.x的Directive要简单。
+从做一个复杂完整的SPA的角度来说的话，就目前而言，我认为基于React会更难一些（主要以react的角度来谈一下）">
+<meta name="twitter:image" content="http://yoursite.com/images/mvc/.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/07/09/react与angular的取舍/"/>
+
+  <title> react与angular的取舍 | 沙滩上的梦厦 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="https://music.163.com/outchain/player?type=2&id=113537&auto=0&height=66"></iframe>
+ 
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">沙滩上的梦厦</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">My blog</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                react与angular的取舍
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-09T00:57:01+08:00" content="2016-07-09">
+              2016-07-09
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/09/react与angular的取舍/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/09/react与angular的取舍/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+            
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="首先，拿React和Angular比较本身就没多大意义。"><a href="#首先，拿React和Angular比较本身就没多大意义。" class="headerlink" title="首先，拿React和Angular比较本身就没多大意义。"></a>首先，拿React和Angular比较本身就没多大意义。</h3><p>如果非要比较的话，我认为React比Angular 1.x的Directive要简单。</p>
+<p>从做一个复杂完整的SPA的角度来说的话，就目前而言，我认为基于React会更难一些（主要以react的角度来谈一下）</p>
+<p><img src="/images/mvc/.png"><br><a id="more"></a></p>
+<h4 id="1-React-本身只是一个View层的Library，通过state来控制具体的Virtual-DOM-render，而复杂SPA所需要的额外所有功能都需要自己去寻找解决方案（backbone笑而不语…）。比如如果要增加前端路由则需要额外进行技术选型（react-router、react-routing等等等），更不要说涉及到异步请求的fetch，涉及到状态管理的Flux，flummox，redux等等…"><a href="#1-React-本身只是一个View层的Library，通过state来控制具体的Virtual-DOM-render，而复杂SPA所需要的额外所有功能都需要自己去寻找解决方案（backbone笑而不语…）。比如如果要增加前端路由则需要额外进行技术选型（react-router、react-routing等等等），更不要说涉及到异步请求的fetch，涉及到状态管理的Flux，flummox，redux等等…" class="headerlink" title="1. React 本身只是一个View层的Library，通过state来控制具体的Virtual DOM render，而复杂SPA所需要的额外所有功能都需要自己去寻找解决方案（backbone笑而不语…）。比如如果要增加前端路由则需要额外进行技术选型（react-router、react-routing等等等），更不要说涉及到异步请求的fetch，涉及到状态管理的Flux，flummox，redux等等…"></a>1. React 本身只是一个View层的Library，通过state来控制具体的Virtual DOM render，而复杂SPA所需要的额外所有功能都需要自己去寻找解决方案（backbone笑而不语…）。比如如果要增加前端路由则需要额外进行技术选型（react-router、react-routing等等等），更不要说涉及到异步请求的fetch，涉及到状态管理的Flux，flummox，redux等等…</h4><h4 id="2-需要深入理解React-Component的life-circle，以及基于state的开发思想，否则很容易做得不伦不类，说的好像自己项目用了react一样，实际上可能只不过是jquery的心套了层react的皮。更不要说flux系列具有一定的理解难度和学习成本。（另外，设计app的时候会更多的从顶层思考app的状态及状态之间的转化，但并非任何业务场景都适合，很有可能状态中间穿插着form表单所需要的双向绑定，或者不直接通过render而进行的dom操作）"><a href="#2-需要深入理解React-Component的life-circle，以及基于state的开发思想，否则很容易做得不伦不类，说的好像自己项目用了react一样，实际上可能只不过是jquery的心套了层react的皮。更不要说flux系列具有一定的理解难度和学习成本。（另外，设计app的时候会更多的从顶层思考app的状态及状态之间的转化，但并非任何业务场景都适合，很有可能状态中间穿插着form表单所需要的双向绑定，或者不直接通过render而进行的dom操作）" class="headerlink" title="2. 需要深入理解React Component的life circle，以及基于state的开发思想，否则很容易做得不伦不类，说的好像自己项目用了react一样，实际上可能只不过是jquery的心套了层react的皮。更不要说flux系列具有一定的理解难度和学习成本。（另外，设计app的时候会更多的从顶层思考app的状态及状态之间的转化，但并非任何业务场景都适合，很有可能状态中间穿插着form表单所需要的双向绑定，或者不直接通过render而进行的dom操作）"></a>2. 需要深入理解React Component的life circle，以及基于state的开发思想，否则很容易做得不伦不类，说的好像自己项目用了react一样，实际上可能只不过是jquery的心套了层react的皮。更不要说flux系列具有一定的理解难度和学习成本。（另外，设计app的时候会更多的从顶层思考app的状态及状态之间的转化，但并非任何业务场景都适合，很有可能状态中间穿插着form表单所需要的双向绑定，或者不直接通过render而进行的dom操作）</h4><h4 id="3-react和webpack联系还是比较紧密的，开发react-app大多会接触到webpack，接触到webpack自然就会接触到webpack庞大的生态圈，深入下去又是一个具有不太平坦学习曲线的东东。"><a href="#3-react和webpack联系还是比较紧密的，开发react-app大多会接触到webpack，接触到webpack自然就会接触到webpack庞大的生态圈，深入下去又是一个具有不太平坦学习曲线的东东。" class="headerlink" title="3. react和webpack联系还是比较紧密的，开发react app大多会接触到webpack，接触到webpack自然就会接触到webpack庞大的生态圈，深入下去又是一个具有不太平坦学习曲线的东东。"></a>3. react和webpack联系还是比较紧密的，开发react app大多会接触到webpack，接触到webpack自然就会接触到webpack庞大的生态圈，深入下去又是一个具有不太平坦学习曲线的东东。</h4><h4 id="4-调试过程中不出意外还会用到react-dev-server，但是如果使用redux的话，还有redux-dev以及对应的各种插件…"><a href="#4-调试过程中不出意外还会用到react-dev-server，但是如果使用redux的话，还有redux-dev以及对应的各种插件…" class="headerlink" title="4. 调试过程中不出意外还会用到react-dev-server，但是如果使用redux的话，还有redux-dev以及对应的各种插件…"></a>4. 调试过程中不出意外还会用到react-dev-server，但是如果使用redux的话，还有redux-dev以及对应的各种插件…</h4><h4 id="5-React文档和资源比angular要少很多，react还没有发布1-0，react本身也在迅速迭代和变化，这意味着它可以更好的进化，也意味着进化过程中跟随者要付出更大的成本。比如某些同学刚用熟flux，就出了reflux，Alt，flummox…用惯了flummox结果人家作者不维护了，说redux用着更爽，作者也跟着用一个口音很呆萌的德国小帅哥写的很呆萌的redux去了…"><a href="#5-React文档和资源比angular要少很多，react还没有发布1-0，react本身也在迅速迭代和变化，这意味着它可以更好的进化，也意味着进化过程中跟随者要付出更大的成本。比如某些同学刚用熟flux，就出了reflux，Alt，flummox…用惯了flummox结果人家作者不维护了，说redux用着更爽，作者也跟着用一个口音很呆萌的德国小帅哥写的很呆萌的redux去了…" class="headerlink" title="5. React文档和资源比angular要少很多，react还没有发布1.0，react本身也在迅速迭代和变化，这意味着它可以更好的进化，也意味着进化过程中跟随者要付出更大的成本。比如某些同学刚用熟flux，就出了reflux，Alt，flummox…用惯了flummox结果人家作者不维护了，说redux用着更爽，作者也跟着用一个口音很呆萌的德国小帅哥写的很呆萌的redux去了…"></a>5. React文档和资源比angular要少很多，react还没有发布1.0，react本身也在迅速迭代和变化，这意味着它可以更好的进化，也意味着进化过程中跟随者要付出更大的成本。比如某些同学刚用熟flux，就出了reflux，Alt，flummox…用惯了flummox结果人家作者不维护了，说redux用着更爽，作者也跟着用一个口音很呆萌的德国小帅哥写的很呆萌的redux去了…</h4><h4 id="6-react面相未来，我们可以使用很多ES6和ES7的语法来使得定义一个Component变的更简单，比如我们可以使用class-static-properties来初始化propType、defaultProps或者state，constructor初始化来代替getInitialState方法等，但react在es6-7中反而不支持使用mixin，需要额外引入第三方库来解决对应的问题。（另外，使用es6-7还需要额外了解如何配置babel，eslint，babel-eslint，eslint-react-plugin等等，当然这和react无关，但在开发的时候很可能是需要去学习的。）"><a href="#6-react面相未来，我们可以使用很多ES6和ES7的语法来使得定义一个Component变的更简单，比如我们可以使用class-static-properties来初始化propType、defaultProps或者state，constructor初始化来代替getInitialState方法等，但react在es6-7中反而不支持使用mixin，需要额外引入第三方库来解决对应的问题。（另外，使用es6-7还需要额外了解如何配置babel，eslint，babel-eslint，eslint-react-plugin等等，当然这和react无关，但在开发的时候很可能是需要去学习的。）" class="headerlink" title="6. react面相未来，我们可以使用很多ES6和ES7的语法来使得定义一个Component变的更简单，比如我们可以使用class static properties来初始化propType、defaultProps或者state，constructor初始化来代替getInitialState方法等，但react在es6/7中反而不支持使用mixin，需要额外引入第三方库来解决对应的问题。（另外，使用es6/7还需要额外了解如何配置babel，eslint，babel-eslint，eslint-react plugin等等，当然这和react无关，但在开发的时候很可能是需要去学习的。）"></a>6. react面相未来，我们可以使用很多ES6和ES7的语法来使得定义一个Component变的更简单，比如我们可以使用class static properties来初始化propType、defaultProps或者state，constructor初始化来代替getInitialState方法等，但react在es6/7中反而不支持使用mixin，需要额外引入第三方库来解决对应的问题。（另外，使用es6/7还需要额外了解如何配置babel，eslint，babel-eslint，eslint-react plugin等等，当然这和react无关，但在开发的时候很可能是需要去学习的。）</h4><h4 id="7-基于react的各种插件相比ng来说还是太少，并且大多不成熟，所以真是要用到第三方组件的时候可能需要自己wrap一个component出来。"><a href="#7-基于react的各种插件相比ng来说还是太少，并且大多不成熟，所以真是要用到第三方组件的时候可能需要自己wrap一个component出来。" class="headerlink" title="7. 基于react的各种插件相比ng来说还是太少，并且大多不成熟，所以真是要用到第三方组件的时候可能需要自己wrap一个component出来。"></a>7. 基于react的各种插件相比ng来说还是太少，并且大多不成熟，所以真是要用到第三方组件的时候可能需要自己wrap一个component出来。</h4><p>我想对看到这里还想学React的同学说：“React虽然不是银弹，但真的很棒，咱们一起加油，学习React是一件很cool的事情！”</p>
+<p>其实，很多时候我们说的所谓的“坑”，实际上是更创新的思想，更适合某些业务场景的框架，更好的调试工具，更cool的语法，更有意思的编程环境。面对坑，有的人欣喜若狂，有的人踌躇不定，有的人未足不前，不过是对于突破舒适区不同的态度罢了。</p>
+<p>搞技术纯粹些比较好，因为不会不了解，所以想去学习和体验，仅此而已。</p>
+<h3 id="Angular的特点："><a href="#Angular的特点：" class="headerlink" title="Angular的特点："></a>Angular的特点：</h3><p>优势:<br>AngularJS是一套完整的框架，angular有自带的数据绑定、render渲染、angularUI库,过滤器,$filter,$directive(模板),$service(服务), $q(defer),$route, $http，$cookie, $inject(依赖注入),factory,provider……，等等一系列工具，基本上只要你在做web开发用过的东西，它都有一个。但是这些东西react自身都没有。</p>
+<h3 id="React的特点："><a href="#React的特点：" class="headerlink" title="React的特点："></a>React的特点：</h3><p>优势:<br>1.React伟大之处就在于，提出了Virtual Dom这种新颖的思路，并且这种思路衍生出了React Native，有可能会统一Web/Native开发。在性能方面，由于运用了Virtual Dom技术，Reactjs只在调用setState的时候会更新dom，而且还是先更新Virtual Dom，然后和实际Dom比较，最后再更新实际Dom。这个过程比起Angularjs的bind方式来说，一是更新dom的次数少，二是更新dom的内容少，速度肯定快。</p>
+<p>2.ReactJS更关注UI的组件化，和数据的单向更新，提出了FLUX架构的新概念，现在React可以直接用Js ES6语法了，然后通过webpack编译成浏览器兼容的ES5，开发效率上有些优势.<br>React Native生成的App不是运行在WebView上，而是系统原生的UI，React通过jsx生成系统原生的UI，iOS和Android的React UI组件还是比较相似的，大量代码可以复用</p>
+<p>3.维护UI的状态,Angular 里面使用的是 $scope，在 React 里面使用的是 this.setState。 而 React 的好处在于，它更简单直观。所有的状态改变都只有唯一一个入口 this.setState()，Angular 就比较复杂，不知道背后使用了哪些黑魔法。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block； padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/wechat.png" alt="Xinhao-Kc wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎您扫一扫上面的微信号，订阅我的博客！</div>
+</div>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/MVC前端框架/" rel="tag">#MVC前端框架</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/07/06/在已有的gulp工程加上webpack/" rel="next" title="在已有的gulp工程加上webpack">
+                <i class="fa fa-chevron-left"></i> 在已有的gulp工程加上webpack
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!--MOB SHARE BEGIN-->
+<div class="-mob-share-ui" style="display: none">
+<h2>如果您也喜欢这篇文章，请动下手指分享给更多朋友，谢谢啦！</h2>
+    <ul class="-mob-share-list">
+        <li class="-mob-share-weibo"><p>新浪微博</p></li>
+        <li class="-mob-share-tencentweibo"><p>腾讯微博</p></li>
+        <li class="-mob-share-qzone"><p>QQ空间</p></li>
+        <li class="-mob-share-qq"><p>QQ好友</p></li>
+        <li class="-mob-share-renren"><p>人人网</p></li>
+        <li class="-mob-share-kaixin"><p>开心网</p></li>
+        <li class="-mob-share-douban"><p>豆瓣</p></li>
+        <li class="-mob-share-facebook"><p>Facebook</p></li>
+        <li class="-mob-share-twitter"><p>Twitter</p></li>
+    </ul>
+</div>
+<div class="-mob-share-ui-bg"></div>
+    <style>
+        .-mob-share-ui{
+            background: none;
+            visibility: inherit !important;
+            position: inherit !important;
+            voerflow:hidden;
+            opacity: 1 !important;
+            border:0;
+            margin-top: 6%;
+        }
+        .-mob-share-ui h2{
+            color:#fff;
+            margin-bottom:6%;
+        }
+        .-mob-share-ui li{
+               position: inherit !important;
+                top: 0 !important;
+                left: 0 !important;
+                margin-right: 2% !important;
+                width: 50px !important;
+                height: 30px !important;
+                background-size: 54% !important;
+                border:0;
+        }
+        .-mob-share-ui li p{
+                color: #fff !important;
+        }
+    </style>
+<script id="-mob-share" src="https://f1.webshare.mob.com/code/mob-share.js?appkey=appkey"></script>
+<!--MOB SHARE END-->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    <!-- 多说评论框 start -->
+    	<div class="ds-thread" data-thread-key="//请将此处替换成文章在你的站点中的ID" data-title="请替换成文章的标题" data-url="请替换成文章的网址"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"89alex"};
+    	(function() {
+    		var ds = document.createElement('script');
+    		ds.type = 'text/javascript';ds.async = true;
+    		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    		ds.charset = 'UTF-8';
+    		(document.getElementsByTagName('head')[0]
+    		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+    	})();
+    	</script>
+    <!-- 多说公共JS代码 end -->
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Xinhao-Kc" />
+          <p class="site-author-name" itemprop="name">Xinhao-Kc</p>
+          <p class="site-description motion-element" itemprop="description">努力到感动自己，坚持到无能为力</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/89alex" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/5600207545" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="/" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="/" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#首先，拿React和Angular比较本身就没多大意义。"><span class="nav-number">1.</span> <span class="nav-text">首先，拿React和Angular比较本身就没多大意义。</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-React-本身只是一个View层的Library，通过state来控制具体的Virtual-DOM-render，而复杂SPA所需要的额外所有功能都需要自己去寻找解决方案（backbone笑而不语…）。比如如果要增加前端路由则需要额外进行技术选型（react-router、react-routing等等等），更不要说涉及到异步请求的fetch，涉及到状态管理的Flux，flummox，redux等等…"><span class="nav-number">1.1.</span> <span class="nav-text">1. React 本身只是一个View层的Library，通过state来控制具体的Virtual DOM render，而复杂SPA所需要的额外所有功能都需要自己去寻找解决方案（backbone笑而不语…）。比如如果要增加前端路由则需要额外进行技术选型（react-router、react-routing等等等），更不要说涉及到异步请求的fetch，涉及到状态管理的Flux，flummox，redux等等…</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-需要深入理解React-Component的life-circle，以及基于state的开发思想，否则很容易做得不伦不类，说的好像自己项目用了react一样，实际上可能只不过是jquery的心套了层react的皮。更不要说flux系列具有一定的理解难度和学习成本。（另外，设计app的时候会更多的从顶层思考app的状态及状态之间的转化，但并非任何业务场景都适合，很有可能状态中间穿插着form表单所需要的双向绑定，或者不直接通过render而进行的dom操作）"><span class="nav-number">1.2.</span> <span class="nav-text">2. 需要深入理解React Component的life circle，以及基于state的开发思想，否则很容易做得不伦不类，说的好像自己项目用了react一样，实际上可能只不过是jquery的心套了层react的皮。更不要说flux系列具有一定的理解难度和学习成本。（另外，设计app的时候会更多的从顶层思考app的状态及状态之间的转化，但并非任何业务场景都适合，很有可能状态中间穿插着form表单所需要的双向绑定，或者不直接通过render而进行的dom操作）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-react和webpack联系还是比较紧密的，开发react-app大多会接触到webpack，接触到webpack自然就会接触到webpack庞大的生态圈，深入下去又是一个具有不太平坦学习曲线的东东。"><span class="nav-number">1.3.</span> <span class="nav-text">3. react和webpack联系还是比较紧密的，开发react app大多会接触到webpack，接触到webpack自然就会接触到webpack庞大的生态圈，深入下去又是一个具有不太平坦学习曲线的东东。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-调试过程中不出意外还会用到react-dev-server，但是如果使用redux的话，还有redux-dev以及对应的各种插件…"><span class="nav-number">1.4.</span> <span class="nav-text">4. 调试过程中不出意外还会用到react-dev-server，但是如果使用redux的话，还有redux-dev以及对应的各种插件…</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-React文档和资源比angular要少很多，react还没有发布1-0，react本身也在迅速迭代和变化，这意味着它可以更好的进化，也意味着进化过程中跟随者要付出更大的成本。比如某些同学刚用熟flux，就出了reflux，Alt，flummox…用惯了flummox结果人家作者不维护了，说redux用着更爽，作者也跟着用一个口音很呆萌的德国小帅哥写的很呆萌的redux去了…"><span class="nav-number">1.5.</span> <span class="nav-text">5. React文档和资源比angular要少很多，react还没有发布1.0，react本身也在迅速迭代和变化，这意味着它可以更好的进化，也意味着进化过程中跟随者要付出更大的成本。比如某些同学刚用熟flux，就出了reflux，Alt，flummox…用惯了flummox结果人家作者不维护了，说redux用着更爽，作者也跟着用一个口音很呆萌的德国小帅哥写的很呆萌的redux去了…</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-react面相未来，我们可以使用很多ES6和ES7的语法来使得定义一个Component变的更简单，比如我们可以使用class-static-properties来初始化propType、defaultProps或者state，constructor初始化来代替getInitialState方法等，但react在es6-7中反而不支持使用mixin，需要额外引入第三方库来解决对应的问题。（另外，使用es6-7还需要额外了解如何配置babel，eslint，babel-eslint，eslint-react-plugin等等，当然这和react无关，但在开发的时候很可能是需要去学习的。）"><span class="nav-number">1.6.</span> <span class="nav-text">6. react面相未来，我们可以使用很多ES6和ES7的语法来使得定义一个Component变的更简单，比如我们可以使用class static properties来初始化propType、defaultProps或者state，constructor初始化来代替getInitialState方法等，但react在es6/7中反而不支持使用mixin，需要额外引入第三方库来解决对应的问题。（另外，使用es6/7还需要额外了解如何配置babel，eslint，babel-eslint，eslint-react plugin等等，当然这和react无关，但在开发的时候很可能是需要去学习的。）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-基于react的各种插件相比ng来说还是太少，并且大多不成熟，所以真是要用到第三方组件的时候可能需要自己wrap一个component出来。"><span class="nav-number">1.7.</span> <span class="nav-text">7. 基于react的各种插件相比ng来说还是太少，并且大多不成熟，所以真是要用到第三方组件的时候可能需要自己wrap一个component出来。</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Angular的特点："><span class="nav-number">2.</span> <span class="nav-text">Angular的特点：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#React的特点："><span class="nav-number">3.</span> <span class="nav-text">React的特点：</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<div class="copyright" >
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+&nbsp;&nbsp;&nbsp;
+<span id="busuanzi_container_site_uv">
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</span>&nbsp;&nbsp;&nbsp;
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Xinhao-Kc</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"89alex"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+
+
+</body>
+</html>
