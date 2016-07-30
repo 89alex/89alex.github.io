@@ -1,0 +1,721 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="解答这个问题并不困难：唯一的要求是你熟悉React。不要光听别人描述名词，理解起来是很困难的。
+从需求出发，看看使用React需要什么：1. React有props和state: props意味着父级分发下来的属性，state意味着组件内部可以自行管理的状态，并且整个React没有数据向上回溯的能力，也就是说数据只能单向向下分发，或者自行内部消化。理解这个是理解React和Redux的前提。
+2.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="react+redux实现思路">
+<meta property="og:url" content="http://yoursite.com/2016/07/30/react-redux实现思路/index.html">
+<meta property="og:site_name" content="狮子座的尾巴">
+<meta property="og:description" content="解答这个问题并不困难：唯一的要求是你熟悉React。不要光听别人描述名词，理解起来是很困难的。
+从需求出发，看看使用React需要什么：1. React有props和state: props意味着父级分发下来的属性，state意味着组件内部可以自行管理的状态，并且整个React没有数据向上回溯的能力，也就是说数据只能单向向下分发，或者自行内部消化。理解这个是理解React和Redux的前提。
+2.">
+<meta property="og:updated_time" content="2016-07-30T08:20:55.497Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="react+redux实现思路">
+<meta name="twitter:description" content="解答这个问题并不困难：唯一的要求是你熟悉React。不要光听别人描述名词，理解起来是很困难的。
+从需求出发，看看使用React需要什么：1. React有props和state: props意味着父级分发下来的属性，state意味着组件内部可以自行管理的状态，并且整个React没有数据向上回溯的能力，也就是说数据只能单向向下分发，或者自行内部消化。理解这个是理解React和Redux的前提。
+2.">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/07/30/react-redux实现思路/"/>
+
+  <title> react+redux实现思路 | 狮子座的尾巴 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="https://music.163.com/outchain/player?type=2&id=113537&auto=0&height=66"></iframe>
+ 
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">狮子座的尾巴</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">My blog</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                react+redux实现思路
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-30T16:17:50+08:00" content="2016-07-30">
+              2016-07-30
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/30/react-redux实现思路/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/30/react-redux实现思路/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+            
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>解答这个问题并不困难：唯一的要求是你熟悉React。<br>不要光听别人描述名词，理解起来是很困难的。</p>
+<h2 id="从需求出发，看看使用React需要什么："><a href="#从需求出发，看看使用React需要什么：" class="headerlink" title="从需求出发，看看使用React需要什么："></a>从需求出发，看看使用React需要什么：</h2><h3 id="1-React有props和state-props意味着父级分发下来的属性，state意味着组件内部可以自行管理的状态，并且整个React没有数据向上回溯的能力，也就是说数据只能单向向下分发，或者自行内部消化。"><a href="#1-React有props和state-props意味着父级分发下来的属性，state意味着组件内部可以自行管理的状态，并且整个React没有数据向上回溯的能力，也就是说数据只能单向向下分发，或者自行内部消化。" class="headerlink" title="1. React有props和state: props意味着父级分发下来的属性，state意味着组件内部可以自行管理的状态，并且整个React没有数据向上回溯的能力，也就是说数据只能单向向下分发，或者自行内部消化。"></a>1. React有props和state: props意味着父级分发下来的属性，state意味着组件内部可以自行管理的状态，并且整个React没有数据向上回溯的能力，也就是说数据只能单向向下分发，或者自行内部消化。</h3><p>理解这个是理解React和Redux的前提。</p>
+<h3 id="2-一般构建的React组件内部可能是一个完整的应用，它自己工作良好，你可以通过属性作为API控制它。但是更多的时候发现React根本无法让两个组件互相交流，使用对方的数据。"><a href="#2-一般构建的React组件内部可能是一个完整的应用，它自己工作良好，你可以通过属性作为API控制它。但是更多的时候发现React根本无法让两个组件互相交流，使用对方的数据。" class="headerlink" title="2. 一般构建的React组件内部可能是一个完整的应用，它自己工作良好，你可以通过属性作为API控制它。但是更多的时候发现React根本无法让两个组件互相交流，使用对方的数据。"></a>2. 一般构建的React组件内部可能是一个完整的应用，它自己工作良好，你可以通过属性作为API控制它。但是更多的时候发现React根本无法让两个组件互相交流，使用对方的数据。</h3><p>然后这时候不通过DOM沟通（也就是React体制内）解决的唯一办法就是提升state，将state放到共有的父组件中来管理，再作为props分发回子组件。</p>
+<h3 id="3-子组件改变父组件state的办法只能是通过onClick触发父组件声明好的回调，也就是父组件提前声明好函数或方法作为契约描述自己的state将如何变化，再将它同样作为属性交给子组件使用。"><a href="#3-子组件改变父组件state的办法只能是通过onClick触发父组件声明好的回调，也就是父组件提前声明好函数或方法作为契约描述自己的state将如何变化，再将它同样作为属性交给子组件使用。" class="headerlink" title="3. 子组件改变父组件state的办法只能是通过onClick触发父组件声明好的回调，也就是父组件提前声明好函数或方法作为契约描述自己的state将如何变化，再将它同样作为属性交给子组件使用。"></a>3. 子组件改变父组件state的办法只能是通过onClick触发父组件声明好的回调，也就是父组件提前声明好函数或方法作为契约描述自己的state将如何变化，再将它同样作为属性交给子组件使用。</h3><p>这样就出现了一个模式：数据总是单向从顶层向下分发的，但是只有子组件回调在概念上可以回到state顶层影响数据。这样state一定程度上是响应式的。</p>
+<h3 id="4-为了面临所有可能的扩展问题，最容易想到的办法就是把所有state集中放到所有组件顶层，然后分发给所有组件。"><a href="#4-为了面临所有可能的扩展问题，最容易想到的办法就是把所有state集中放到所有组件顶层，然后分发给所有组件。" class="headerlink" title="4. 为了面临所有可能的扩展问题，最容易想到的办法就是把所有state集中放到所有组件顶层，然后分发给所有组件。"></a>4. 为了面临所有可能的扩展问题，最容易想到的办法就是把所有state集中放到所有组件顶层，然后分发给所有组件。</h3><h3 id="5-为了有更好的state管理，就需要一个库来作为更专业的顶层state分发给所有React应用，这就是Redux。让我们回来看看重现上面结构的需求："><a href="#5-为了有更好的state管理，就需要一个库来作为更专业的顶层state分发给所有React应用，这就是Redux。让我们回来看看重现上面结构的需求：" class="headerlink" title="5. 为了有更好的state管理，就需要一个库来作为更专业的顶层state分发给所有React应用，这就是Redux。让我们回来看看重现上面结构的需求："></a>5. 为了有更好的state管理，就需要一个库来作为更专业的顶层state分发给所有React应用，这就是Redux。让我们回来看看重现上面结构的需求：</h3><h4 id="a-需要回调通知state-等同于回调参数-gt-action"><a href="#a-需要回调通知state-等同于回调参数-gt-action" class="headerlink" title="a. 需要回调通知state (等同于回调参数) -&gt; action"></a>a. 需要回调通知state (等同于回调参数) -&gt; action</h4><h4 id="b-需要根据回调处理-等同于父级方法-gt-reducer"><a href="#b-需要根据回调处理-等同于父级方法-gt-reducer" class="headerlink" title="b. 需要根据回调处理 (等同于父级方法) -&gt; reducer"></a>b. 需要根据回调处理 (等同于父级方法) -&gt; reducer</h4><h4 id="c-需要state-等同于总状态-gt-store"><a href="#c-需要state-等同于总状态-gt-store" class="headerlink" title="c. 需要state (等同于总状态) -&gt; store"></a>c. 需要state (等同于总状态) -&gt; store</h4><p>对Redux来说只有这三个要素：</p>
+<h4 id="a-action是纯声明式的数据结构，只提供事件的所有要素，不提供逻辑。"><a href="#a-action是纯声明式的数据结构，只提供事件的所有要素，不提供逻辑。" class="headerlink" title="a. action是纯声明式的数据结构，只提供事件的所有要素，不提供逻辑。"></a>a. action是纯声明式的数据结构，只提供事件的所有要素，不提供逻辑。</h4><h4 id="b-reducer是一个匹配函数，action的发送是全局的：所有的reducer都可以捕捉到并匹配与自己相关与否，相关就拿走action中的要素进行逻辑处理，修改store中的状态，不相关就不对state做处理原样返回。"><a href="#b-reducer是一个匹配函数，action的发送是全局的：所有的reducer都可以捕捉到并匹配与自己相关与否，相关就拿走action中的要素进行逻辑处理，修改store中的状态，不相关就不对state做处理原样返回。" class="headerlink" title="b. reducer是一个匹配函数，action的发送是全局的：所有的reducer都可以捕捉到并匹配与自己相关与否，相关就拿走action中的要素进行逻辑处理，修改store中的状态，不相关就不对state做处理原样返回。"></a>b. reducer是一个匹配函数，action的发送是全局的：所有的reducer都可以捕捉到并匹配与自己相关与否，相关就拿走action中的要素进行逻辑处理，修改store中的状态，不相关就不对state做处理原样返回。</h4><h4 id="c-store负责存储状态并可以被react-api回调，发布action"><a href="#c-store负责存储状态并可以被react-api回调，发布action" class="headerlink" title="c. store负责存储状态并可以被react api回调，发布action."></a>c. store负责存储状态并可以被react api回调，发布action.</h4><p>当然一般不会直接把两个库拿来用，还有一个binding叫react-redux, 提供一个Provider和connect。很多人其实看懂了redux卡在这里。</p>
+<h4 id="a-Provider是一个普通组件，可以作为顶层app的分发点，它只需要store属性就可以了。它会将state分发给所有被connect的组件，不管它在哪里，被嵌套多少层。"><a href="#a-Provider是一个普通组件，可以作为顶层app的分发点，它只需要store属性就可以了。它会将state分发给所有被connect的组件，不管它在哪里，被嵌套多少层。" class="headerlink" title="a. Provider是一个普通组件，可以作为顶层app的分发点，它只需要store属性就可以了。它会将state分发给所有被connect的组件，不管它在哪里，被嵌套多少层。"></a>a. Provider是一个普通组件，可以作为顶层app的分发点，它只需要store属性就可以了。它会将state分发给所有被connect的组件，不管它在哪里，被嵌套多少层。</h4><h4 id="b-connect是真正的重点，它是一个科里化函数，意思是先接受两个参数（数据绑定mapStateToProps和事件绑定mapDispatchToProps），再接受一个参数（将要绑定的组件本身）："><a href="#b-connect是真正的重点，它是一个科里化函数，意思是先接受两个参数（数据绑定mapStateToProps和事件绑定mapDispatchToProps），再接受一个参数（将要绑定的组件本身）：" class="headerlink" title="b. connect是真正的重点，它是一个科里化函数，意思是先接受两个参数（数据绑定mapStateToProps和事件绑定mapDispatchToProps），再接受一个参数（将要绑定的组件本身）："></a>b. connect是真正的重点，它是一个科里化函数，意思是先接受两个参数（数据绑定mapStateToProps和事件绑定mapDispatchToProps），再接受一个参数（将要绑定的组件本身）：</h4><p>mapStateToProps：构建好Redux系统的时候，它会被自动初始化，但是你的React组件并不知道它的存在，因此你需要分拣出你需要的Redux状态，所以你需要绑定一个函数，它的参数是state，简单返回你关心的几个值。<br>mapDispatchToProps：声明好的action作为回调，也可以被注入到组件里，就是通过这个函数，它的参数是dispatch，通过redux的辅助方法bindActionCreator绑定所有action以及参数的dispatch，就可以作为属性在组件里面作为函数简单使用了，不需要手动dispatch。这个mapDispatchToProps是可选的，如果不传这个参数redux会简单把dispatch作为属性注入给组件，可以手动当做store.dispatch使用。这也是为什么要科里化的原因。</p>
+<h2 id="做好以上流程Redux和React就可以工作了。简单地说就是："><a href="#做好以上流程Redux和React就可以工作了。简单地说就是：" class="headerlink" title="做好以上流程Redux和React就可以工作了。简单地说就是："></a>做好以上流程Redux和React就可以工作了。简单地说就是：</h2><h3 id="1-顶层分发状态，让React组件被动地渲染。"><a href="#1-顶层分发状态，让React组件被动地渲染。" class="headerlink" title="1.顶层分发状态，让React组件被动地渲染。"></a>1.顶层分发状态，让React组件被动地渲染。</h3><h3 id="2-监听事件，事件有权利回到所有状态顶层影响状态。"><a href="#2-监听事件，事件有权利回到所有状态顶层影响状态。" class="headerlink" title="2.监听事件，事件有权利回到所有状态顶层影响状态。"></a>2.监听事件，事件有权利回到所有状态顶层影响状态。</h3>
+      
+    </div>
+
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block； padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/wechat.png" alt="Xinhao-Kc wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎您扫一扫上面的微信号，订阅我的博客！</div>
+</div>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/07/09/react与angular的取舍/" rel="next" title="react与angular的取舍">
+                <i class="fa fa-chevron-left"></i> react与angular的取舍
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!--MOB SHARE BEGIN-->
+<div class="-mob-share-ui" style="display: none">
+<h2>如果您也喜欢这篇文章，请动下手指分享给更多朋友，谢谢啦！</h2>
+    <ul class="-mob-share-list">
+        <li class="-mob-share-weibo"><p>新浪微博</p></li>
+        <li class="-mob-share-tencentweibo"><p>腾讯微博</p></li>
+        <li class="-mob-share-qzone"><p>QQ空间</p></li>
+        <li class="-mob-share-qq"><p>QQ好友</p></li>
+        <li class="-mob-share-renren"><p>人人网</p></li>
+        <li class="-mob-share-kaixin"><p>开心网</p></li>
+        <li class="-mob-share-douban"><p>豆瓣</p></li>
+        <li class="-mob-share-facebook"><p>Facebook</p></li>
+        <li class="-mob-share-twitter"><p>Twitter</p></li>
+    </ul>
+</div>
+<div class="-mob-share-ui-bg"></div>
+    <style>
+        .-mob-share-ui{
+            background: none;
+            visibility: inherit !important;
+            position: inherit !important;
+            voerflow:hidden;
+            opacity: 1 !important;
+            border:0;
+            margin-top: 6%;
+        }
+        .-mob-share-ui h2{
+            color:#fff;
+            margin-bottom:6%;
+        }
+        .-mob-share-ui li{
+               position: inherit !important;
+                top: 0 !important;
+                left: 0 !important;
+                margin-right: 2% !important;
+                width: 50px !important;
+                height: 30px !important;
+                background-size: 54% !important;
+                border:0;
+        }
+        .-mob-share-ui li p{
+                color: #fff !important;
+        }
+    </style>
+<script id="-mob-share" src="https://f1.webshare.mob.com/code/mob-share.js?appkey=appkey"></script>
+<!--MOB SHARE END-->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    <!-- 多说评论框 start -->
+    	<div class="ds-thread" data-thread-key="//请将此处替换成文章在你的站点中的ID" data-title="请替换成文章的标题" data-url="请替换成文章的网址"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"89alex"};
+    	(function() {
+    		var ds = document.createElement('script');
+    		ds.type = 'text/javascript';ds.async = true;
+    		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    		ds.charset = 'UTF-8';
+    		(document.getElementsByTagName('head')[0]
+    		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+    	})();
+    	</script>
+    <!-- 多说公共JS代码 end -->
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Xinhao-Kc" />
+          <p class="site-author-name" itemprop="name">Xinhao-Kc</p>
+          <p class="site-description motion-element" itemprop="description">努力到感动自己，坚持到无能为力</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/89alex" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/5600207545" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="/" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="/" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#从需求出发，看看使用React需要什么："><span class="nav-number">1.</span> <span class="nav-text">从需求出发，看看使用React需要什么：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-React有props和state-props意味着父级分发下来的属性，state意味着组件内部可以自行管理的状态，并且整个React没有数据向上回溯的能力，也就是说数据只能单向向下分发，或者自行内部消化。"><span class="nav-number">1.1.</span> <span class="nav-text">1. React有props和state: props意味着父级分发下来的属性，state意味着组件内部可以自行管理的状态，并且整个React没有数据向上回溯的能力，也就是说数据只能单向向下分发，或者自行内部消化。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-一般构建的React组件内部可能是一个完整的应用，它自己工作良好，你可以通过属性作为API控制它。但是更多的时候发现React根本无法让两个组件互相交流，使用对方的数据。"><span class="nav-number">1.2.</span> <span class="nav-text">2. 一般构建的React组件内部可能是一个完整的应用，它自己工作良好，你可以通过属性作为API控制它。但是更多的时候发现React根本无法让两个组件互相交流，使用对方的数据。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-子组件改变父组件state的办法只能是通过onClick触发父组件声明好的回调，也就是父组件提前声明好函数或方法作为契约描述自己的state将如何变化，再将它同样作为属性交给子组件使用。"><span class="nav-number">1.3.</span> <span class="nav-text">3. 子组件改变父组件state的办法只能是通过onClick触发父组件声明好的回调，也就是父组件提前声明好函数或方法作为契约描述自己的state将如何变化，再将它同样作为属性交给子组件使用。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-为了面临所有可能的扩展问题，最容易想到的办法就是把所有state集中放到所有组件顶层，然后分发给所有组件。"><span class="nav-number">1.4.</span> <span class="nav-text">4. 为了面临所有可能的扩展问题，最容易想到的办法就是把所有state集中放到所有组件顶层，然后分发给所有组件。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-为了有更好的state管理，就需要一个库来作为更专业的顶层state分发给所有React应用，这就是Redux。让我们回来看看重现上面结构的需求："><span class="nav-number">1.5.</span> <span class="nav-text">5. 为了有更好的state管理，就需要一个库来作为更专业的顶层state分发给所有React应用，这就是Redux。让我们回来看看重现上面结构的需求：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#a-需要回调通知state-等同于回调参数-gt-action"><span class="nav-number">1.5.1.</span> <span class="nav-text">a. 需要回调通知state (等同于回调参数) -> action</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#b-需要根据回调处理-等同于父级方法-gt-reducer"><span class="nav-number">1.5.2.</span> <span class="nav-text">b. 需要根据回调处理 (等同于父级方法) -> reducer</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#c-需要state-等同于总状态-gt-store"><span class="nav-number">1.5.3.</span> <span class="nav-text">c. 需要state (等同于总状态) -> store</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#a-action是纯声明式的数据结构，只提供事件的所有要素，不提供逻辑。"><span class="nav-number">1.5.4.</span> <span class="nav-text">a. action是纯声明式的数据结构，只提供事件的所有要素，不提供逻辑。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#b-reducer是一个匹配函数，action的发送是全局的：所有的reducer都可以捕捉到并匹配与自己相关与否，相关就拿走action中的要素进行逻辑处理，修改store中的状态，不相关就不对state做处理原样返回。"><span class="nav-number">1.5.5.</span> <span class="nav-text">b. reducer是一个匹配函数，action的发送是全局的：所有的reducer都可以捕捉到并匹配与自己相关与否，相关就拿走action中的要素进行逻辑处理，修改store中的状态，不相关就不对state做处理原样返回。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#c-store负责存储状态并可以被react-api回调，发布action"><span class="nav-number">1.5.6.</span> <span class="nav-text">c. store负责存储状态并可以被react api回调，发布action.</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#a-Provider是一个普通组件，可以作为顶层app的分发点，它只需要store属性就可以了。它会将state分发给所有被connect的组件，不管它在哪里，被嵌套多少层。"><span class="nav-number">1.5.7.</span> <span class="nav-text">a. Provider是一个普通组件，可以作为顶层app的分发点，它只需要store属性就可以了。它会将state分发给所有被connect的组件，不管它在哪里，被嵌套多少层。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#b-connect是真正的重点，它是一个科里化函数，意思是先接受两个参数（数据绑定mapStateToProps和事件绑定mapDispatchToProps），再接受一个参数（将要绑定的组件本身）："><span class="nav-number">1.5.8.</span> <span class="nav-text">b. connect是真正的重点，它是一个科里化函数，意思是先接受两个参数（数据绑定mapStateToProps和事件绑定mapDispatchToProps），再接受一个参数（将要绑定的组件本身）：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#做好以上流程Redux和React就可以工作了。简单地说就是："><span class="nav-number">2.</span> <span class="nav-text">做好以上流程Redux和React就可以工作了。简单地说就是：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-顶层分发状态，让React组件被动地渲染。"><span class="nav-number">2.1.</span> <span class="nav-text">1.顶层分发状态，让React组件被动地渲染。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-监听事件，事件有权利回到所有状态顶层影响状态。"><span class="nav-number">2.2.</span> <span class="nav-text">2.监听事件，事件有权利回到所有状态顶层影响状态。</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<div class="copyright" >
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+&nbsp;&nbsp;&nbsp;
+<span id="busuanzi_container_site_uv">
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</span>&nbsp;&nbsp;&nbsp;
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Xinhao-Kc</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"89alex"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+
+
+</body>
+</html>
